@@ -45,10 +45,10 @@ struct DetailsListView: View {
 
 struct DetailsListView_Previews: PreviewProvider {
     static var previewItems: [ItemModel] = [
-        ItemModel(Icons.doc_text, "First"),
-        ItemModel(Icons.doc_text, "Second"),
-        ItemModel(Icons.doc_text, "Third"),
-        ItemModel(Icons.doc_text, "Fourth"),
+        ItemModel(Icons.doc_text, "First", .blue),
+        ItemModel(Icons.doc_text, "Second", .blue),
+        ItemModel(Icons.doc_text, "Third", .blue),
+        ItemModel(Icons.doc_text, "Fourth", .blue),
     ]
     @Namespace static var previewAnimation
 

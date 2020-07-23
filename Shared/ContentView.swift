@@ -3,19 +3,19 @@ import SwiftUI
 struct ContentView: View {
     var data: [ItemLineModel] = [
         ItemLineModel(id: "1", items: [
-            ItemModel(Icons.doc_text, "First"),
-            ItemModel(Icons.doc_text, "Second"),
-            ItemModel(Icons.doc_text, "Third"),
-            ItemModel(Icons.doc_text, "Fourth"),
+            ItemModel(Icons.doc_text, "First", .blue),
+            ItemModel(Icons.doc_text, "Second", .green),
+            ItemModel(Icons.doc_text, "Third", .orange),
+            ItemModel(Icons.doc_text, "Fourth", .blue),
         ]),
         ItemLineModel(id: "2", items: [
-            ItemModel(Icons.doc_text, "Fem"),
-            ItemModel(Icons.doc_text, "Seks"),
-            ItemModel(Icons.doc_text, "Syv"),
+            ItemModel(Icons.doc_text, "Fem", .blue),
+            ItemModel(Icons.doc_text, "Seks", .orange),
+            ItemModel(Icons.doc_text, "Syv", .pink),
         ]),
         ItemLineModel(id: "3", items: [
-            ItemModel(Icons.doc_text, "Madrid"),
-            ItemModel(Icons.doc_text, "Barcelona"),
+            ItemModel(Icons.doc_text, "Madrid", .blue),
+            ItemModel(Icons.doc_text, "Barcelona", .blue),
         ]),
     ]
     

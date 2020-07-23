@@ -15,14 +15,7 @@ struct OverviewCellView: View {
             VStack(spacing: 0) {
                 HStack {
                     ForEach(line.items) { item in
-                        HStack {
-                            item.icon
-                                .matchedGeometryEffect(id: "\(item.id).icon", in: lineAnimation)
-                            Text(item.text)
-                                .matchedGeometryEffect(id: "\(item.id).text", in: lineAnimation)
-                        }
-                        .padding(4)
-                        .border(Color.gray)
+                        OverviewItemView(item: item, lineAnimation: lineAnimation)
                     }
                     Spacer()
                 }
@@ -36,10 +29,10 @@ struct OverviewCellView: View {
 
 struct OverviewCellView_Previews: PreviewProvider {
     static var previewData: ItemLineModel = ItemLineModel(id: "2", items: [
-        ItemModel(Icons.doc_text, "First"),
-        ItemModel(Icons.doc_text, "Second"),
-        ItemModel(Icons.doc_text, "Third"),
-        ItemModel(Icons.doc_text, "Fourth"),
+        ItemModel(Icons.doc_text, "First", .blue),
+        ItemModel(Icons.doc_text, "Second", .blue),
+        ItemModel(Icons.doc_text, "Third", .blue),
+        ItemModel(Icons.doc_text, "Fourth", .blue),
     ])
     @Namespace static var previewAnimation
     

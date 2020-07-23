@@ -19,19 +19,19 @@ struct OverviewListView: View {
 struct OverviewListView_Previews: PreviewProvider {
     static var previewData: [ItemLineModel] = [
         ItemLineModel(id: "1", items: [
-            ItemModel(Icons.doc_text, "First"),
-            ItemModel(Icons.doc_text, "Second"),
-            ItemModel(Icons.doc_text, "Third"),
-            ItemModel(Icons.doc_text, "Fourth"),
+            ItemModel(Icons.doc_text, "First", .blue),
+            ItemModel(Icons.doc_text, "Second", .blue),
+            ItemModel(Icons.doc_text, "Third", .green),
+            ItemModel(Icons.doc_text, "Fourth", .orange),
         ]),
         ItemLineModel(id: "2", items: [
-            ItemModel(Icons.doc_text, "Fem"),
-            ItemModel(Icons.doc_text, "Seks"),
-            ItemModel(Icons.doc_text, "Syv"),
+            ItemModel(Icons.doc_text, "Fem", .blue),
+            ItemModel(Icons.doc_text, "Seks", .blue),
+            ItemModel(Icons.doc_text, "Syv", .blue),
         ]),
         ItemLineModel(id: "3", items: [
-            ItemModel(Icons.doc_text, "Madrid"),
-            ItemModel(Icons.doc_text, "Barcelona"),
+            ItemModel(Icons.doc_text, "Madrid", .blue),
+            ItemModel(Icons.doc_text, "Barcelona", .blue),
         ]),
     ]
     @Namespace static var previewAnimation

@@ -7,6 +7,10 @@ struct DetailsListCellView: View {
     var body: some View {
         VStack {
             HStack {
+                RoundedRectangle(cornerRadius: 8)
+                    .foregroundColor(item.color)
+                    .frame(width: 30, height: 30)
+                    .matchedGeometryEffect(id: "\(item.id).color", in: lineAnimation)
                 item.icon
                     .matchedGeometryEffect(id: "\(item.id).icon", in: lineAnimation)
                 Text(item.text)
@@ -23,7 +27,7 @@ struct DetailsListCellView_Previews: PreviewProvider {
     @Namespace static var previewAnimation
     
     static var previews: some View {
-        DetailsListCellView(item: ItemModel(Icons.doc_text, "First"),
+        DetailsListCellView(item: ItemModel(Icons.doc_text, "First", .blue),
                             lineAnimation: previewAnimation)
     }
 }
