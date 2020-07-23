@@ -8,9 +8,10 @@ struct DetailsListCellView: View {
         VStack {
             HStack {
                 RoundedRectangle(cornerRadius: 8)
+                    .matchedGeometryEffect(id: "\(item.id).color", in: lineAnimation)
                     .foregroundColor(item.color)
                     .frame(width: 30, height: 30)
-                    .matchedGeometryEffect(id: "\(item.id).color", in: lineAnimation)
+
                 item.icon
                     .matchedGeometryEffect(id: "\(item.id).icon", in: lineAnimation)
                 Text(item.text)

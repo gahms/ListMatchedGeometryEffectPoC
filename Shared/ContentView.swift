@@ -4,8 +4,8 @@ struct ContentView: View {
     var data: [ItemLineModel] = [
         ItemLineModel(id: "1", items: [
             ItemModel(Icons.doc_text, "First", .blue),
-            ItemModel(Icons.doc_text, "Second", .green),
-            ItemModel(Icons.doc_text, "Third", .orange),
+            ItemModel(Icons.bolt_circle, "Second", .green),
+            ItemModel(Icons.moon, "Third", .orange),
             ItemModel(Icons.doc_text, "Fourth", .blue),
         ]),
         ItemLineModel(id: "2", items: [

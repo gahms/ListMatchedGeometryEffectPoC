@@ -13,8 +13,9 @@ struct OverviewItemView: View {
         }
         .padding(4)
         .background(RoundedRectangle(cornerRadius: 8)
+                        .matchedGeometryEffect(id: "\(item.id).color", in: lineAnimation)
                         .foregroundColor(item.color)
-                        .matchedGeometryEffect(id: "\(item.id).color", in: lineAnimation))
+                        )
         .foregroundColor(Color.white)
     }
 }
