@@ -8,6 +8,7 @@ struct OverviewItemView: View {
         HStack {
             item.icon
                 .matchedGeometryEffect(id: "\(item.id).icon", in: lineAnimation)
+                
             Text(item.text)
                 .matchedGeometryEffect(id: "\(item.id).text", in: lineAnimation)
         }
@@ -15,7 +16,7 @@ struct OverviewItemView: View {
         .background(RoundedRectangle(cornerRadius: 8)
                         .matchedGeometryEffect(id: "\(item.id).color", in: lineAnimation)
                         .foregroundColor(item.color)
-                        )
+        )
         .foregroundColor(Color.white)
     }
 }

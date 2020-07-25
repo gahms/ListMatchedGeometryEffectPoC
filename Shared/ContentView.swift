@@ -24,19 +24,26 @@ struct ContentView: View {
     @Namespace var lineAnimation
     
     var body: some View {
-        VStack {
-            if selectedLine == nil {
+        ZStack(alignment: Alignment(horizontal: .center, vertical: .top)) {
+            NavigationView {
                 OverviewListView(lines: data,
                                  selectedLine: $selectedLine,
                                  lineAnimation: lineAnimation)
+                    .navigationBarTitle("Overview", displayMode: .inline)
             }
-            else {
-                DetailsListView(items: selectedLine!.items,
-                                selectedLine: $selectedLine,
-                                lineAnimation: lineAnimation)
+            .navigationViewStyle(StackNavigationViewStyle())
+            .zIndex(1)
+
+            if selectedLine != nil {
+                Color.white.overlay(
+                    DetailsListView(items: selectedLine!.items,
+                                    selectedLine: $selectedLine,
+                                    lineAnimation: lineAnimation)
+                )
+                .zIndex(3)
             }
-            Spacer()
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 

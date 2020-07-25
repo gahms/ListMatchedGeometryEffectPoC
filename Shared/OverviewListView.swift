@@ -6,11 +6,13 @@ struct OverviewListView: View {
     var lineAnimation: Namespace.ID
     
     var body: some View {
-        LazyVStack(spacing: 0) {
-            ForEach(lines) { line in
-                OverviewCellView(line: line,
-                                 selectedLine: $selectedLine,
-                                 lineAnimation: lineAnimation)
+        ScrollView {
+            LazyVStack(spacing: 0) {
+                ForEach(lines) { line in
+                    OverviewCellView(line: line,
+                                     selectedLine: $selectedLine,
+                                     lineAnimation: lineAnimation)
+                }
             }
         }
     }

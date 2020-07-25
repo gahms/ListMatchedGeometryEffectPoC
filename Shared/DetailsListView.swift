@@ -12,12 +12,16 @@ struct DetailsListView: View {
                 heading
                     .transition(.move(edge: .trailing))
             }
-            ForEach(items) { item in
-                DetailsListCellView(item: item,
-                                    lineAnimation: lineAnimation)
+            ScrollView {
+                ForEach(items) { item in
+                    DetailsListCellView(item: item,
+                                        lineAnimation: lineAnimation)
+                }
             }
         }
         .padding()
+        .border(Color.black)
+        .padding(6)
         .onAppear {
             withAnimation {
                 showHeading = true
@@ -26,20 +30,26 @@ struct DetailsListView: View {
     }
     
     var heading: some View {
-        HStack {
-            Button("Back") {
+        ZStack(alignment: .topTrailing) {
+            HStack {
+                Spacer()
+                Text("Details")
+                    .font(.title)
+                Spacer()
+            }
+            .padding()
+            
+            Button {
                 withAnimation {
                     showHeading = false
                     selectedLine = nil
                 }
             }
-            Spacer()
-            Text("Details")
-                .font(.title)
-            Spacer()
+            label: {
+                Icons.xmark_circle.imageScale(.large)
+            }
+            .padding(2)
         }
-        .padding()
-        .border(Color.gray)
     }
 }
 

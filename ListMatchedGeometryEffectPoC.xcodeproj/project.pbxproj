@@ -86,16 +86,16 @@
 			children = (
 				B190965124C9F7D800C4E61E /* ListMatchedGeometryEffectPoCApp.swift */,
 				B190965224C9F7D800C4E61E /* ContentView.swift */,
-				B190965324C9F7D900C4E61E /* Assets.xcassets */,
 				B1A6971224C9FB5C0000CEF4 /* OverviewListView.swift */,
 				B190967224C9F95600C4E61E /* OverviewCellView.swift */,
 				B1A6972424CA27EC0000CEF4 /* OverviewItemView.swift */,
-				B1A6970F24C9FAC30000CEF4 /* Icons.swift */,
-				B1A6971524C9FC110000CEF4 /* Hairline.swift */,
-				B1A6971824C9FD510000CEF4 /* ItemModel.swift */,
 				B1A6971B24CA00760000CEF4 /* DetailsListView.swift */,
 				B1A6971E24CA0D030000CEF4 /* DetailsListCellView.swift */,
+				B1A6971824C9FD510000CEF4 /* ItemModel.swift */,
 				B1A6972124CA0E160000CEF4 /* ItemLineModel.swift */,
+				B1A6970F24C9FAC30000CEF4 /* Icons.swift */,
+				B1A6971524C9FC110000CEF4 /* Hairline.swift */,
+				B190965324C9F7D900C4E61E /* Assets.xcassets */,
 			);
 			path = Shared;
 			sourceTree = "<group>";

@@ -6,24 +6,38 @@ struct OverviewCellView: View {
     var lineAnimation: Namespace.ID
     
     var body: some View {
-        Button {
-            withAnimation {
-                selectedLine = line
+        VStack(spacing: 0) {
+            Button {
+                withAnimation {
+                    selectedLine = line
+                }
             }
-        }
-        label: {
-            VStack(spacing: 0) {
+            label: {
                 HStack {
-                    ForEach(line.items) { item in
-                        OverviewItemView(item: item, lineAnimation: lineAnimation)
+                    // The items needs to disappear when selected to make hero
+                    // animation work. Otherwise SwiftUI will complain that multiple
+                    // equal id's with isSource == true exists.
+                    if selectedLine?.id == line.id {
+                        OverviewItemView(item: ItemModel(Icons.doc_text, "Barcelona", .blue), lineAnimation: lineAnimation)
+                            .hidden()
+                    }
+                    else {
+                        ForEach(line.items) { item in
+                            OverviewItemView(
+                                item: item,
+                                lineAnimation: lineAnimation)
+                        }
                     }
                     Spacer()
                 }
                 .padding(8)
-                Hairline()
+                // need to set background color to have all of width be touch
+                // area
+                .background(Color(UIColor.systemBackground))
             }
+            .buttonStyle(PlainButtonStyle())
+            Hairline()
         }
-        .buttonStyle(PlainButtonStyle())
     }
 }
 
