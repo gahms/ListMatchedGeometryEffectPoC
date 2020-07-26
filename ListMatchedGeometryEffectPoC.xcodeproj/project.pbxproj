@@ -51,6 +51,9 @@
 		B1A6971E24CA0D030000CEF4 /* DetailsListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsListCellView.swift; sourceTree = "<group>"; };
 		B1A6972124CA0E160000CEF4 /* ItemLineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemLineModel.swift; sourceTree = "<group>"; };
 		B1A6972424CA27EC0000CEF4 /* OverviewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewItemView.swift; sourceTree = "<group>"; };
+		B1A6972724CDE67D0000CEF4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B1A6972924CDE67D0000CEF4 /* Details.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Details.png; sourceTree = "<group>"; };
+		B1A6972A24CDE67D0000CEF4 /* Overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Overview.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +77,8 @@
 		B190964B24C9F7D700C4E61E = {
 			isa = PBXGroup;
 			children = (
+				B1A6972824CDE67D0000CEF4 /* doc */,
+				B1A6972724CDE67D0000CEF4 /* README.md */,
 				B190965024C9F7D800C4E61E /* Shared */,
 				B190965A24C9F7D900C4E61E /* iOS */,
 				B190966124C9F7D900C4E61E /* macOS */,
@@ -124,6 +129,15 @@
 				B190966324C9F7D900C4E61E /* macOS.entitlements */,
 			);
 			path = macOS;
+			sourceTree = "<group>";
+		};
+		B1A6972824CDE67D0000CEF4 /* doc */ = {
+			isa = PBXGroup;
+			children = (
+				B1A6972924CDE67D0000CEF4 /* Details.png */,
+				B1A6972A24CDE67D0000CEF4 /* Overview.png */,
+			);
+			path = doc;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
