@@ -33,7 +33,7 @@ struct OverviewCellView: View {
                 .padding(8)
                 // need to set background color to have all of width be touch
                 // area
-                .background(Color(UIColor.systemBackground))
+                .background(Color.white)
             }
             .buttonStyle(PlainButtonStyle())
             Hairline()
