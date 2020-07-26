@@ -34,9 +34,9 @@ struct ContentView: View {
             .navigationViewStyle(StackNavigationViewStyle())
             .zIndex(1)
 
-            if selectedLine != nil {
+            if let selectedLine = selectedLine {
                 Color.white.overlay(
-                    DetailsListView(items: selectedLine!.items,
+                    DetailsListView(items: selectedLine.items,
                                     selectedLine: $selectedLine,
                                     lineAnimation: lineAnimation)
                 )
