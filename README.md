@@ -129,3 +129,155 @@ label: {
     Icons.xmark_circle.imageScale(.large)
 }
 ```
+
+# Animations!
+
+The primary goal for my explorations was animations, so let us add some of
+those. 
+
+## Overview
+
+First, the overview consist of `OverviewListView` that contains a
+`VStack` of all lines, each with a `OverviewCellView`. Each of those consists of
+a `HStack` with all the items, each shown with an `OverviewItemView`.
+
+An `OverviewItemView` contains an icon, a text and a colored `RoundedRectangle`
+as background.
+
+```
+var body: some View {
+    HStack {
+        item.icon
+        Text(item.text)
+    }
+    .padding(4)
+    .background(RoundedRectangle(cornerRadius: 8)
+                    .foregroundColor(item.color)
+    )
+    .foregroundColor(Color.white)
+}
+```
+
+## Details
+
+The details view consists of `DetailsListView` that have a `VStack` of all
+items, with each item displayed by a `DetailsListCellView`. Here we again have
+the same icon, text and colored `RoundedRectangle`, although here the colored
+`RoundedRectangle` is not background but as separate element in a `HStack` with
+the icon and the text.
+
+```
+HStack {
+    RoundedRectangle(cornerRadius: 8)
+        .foregroundColor(item.color)
+        .frame(width: 30, height: 30)
+    item.icon
+    Text(item.text)
+    Spacer()
+}
+.padding()
+```
+
+## Matched Geometry Effect
+
+Next step is to ensure the elements of the overview view is matched with the
+corresponding elements in the details view. This is done with
+`.matchedGeometryEffect` view modifier. The overview contains more than one
+line, all with the same elements so we need to ensure the right elements are
+matched. 
+
+This is done by using the item id as part of the `id` parameter to
+`.matchedGeometryEffect`. So both in the overview and in the details, the
+rounded rectangle is given this string as id: 
+```
+"\(item.id).color"
+```
+
+Similarly for the other elements.
+
+Now yhe `OverviewItemView` ends up like this:
+```
+var body: some View {
+    HStack {
+        item.icon
+            .matchedGeometryEffect(id: "\(item.id).icon", in: lineAnimation)
+            
+        Text(item.text)
+            .matchedGeometryEffect(id: "\(item.id).text", in: lineAnimation)
+    }
+    .padding(4)
+    .background(RoundedRectangle(cornerRadius: 8)
+                    .matchedGeometryEffect(id: "\(item.id).color", in: lineAnimation)
+                    .foregroundColor(item.color)
+    )
+    .foregroundColor(Color.white)
+}
+```
+
+and the final `DetailsListCellView` has this body:
+```
+var body: some View {
+    VStack {
+        HStack {
+            RoundedRectangle(cornerRadius: 8)
+                .matchedGeometryEffect(id: "\(item.id).color", in: lineAnimation)
+                .foregroundColor(item.color)
+                .frame(width: 30, height: 30)
+
+            item.icon
+                .matchedGeometryEffect(id: "\(item.id).icon", in: lineAnimation)
+            Text(item.text)
+                .matchedGeometryEffect(id: "\(item.id).text", in: lineAnimation)
+            Spacer()
+        }
+        .padding()
+        Hairline()
+    }
+}
+```
+
+## Namespace
+
+The second parameter for `.matchedGeometryEffect` is a namespace. This namespace
+must match for the animation to work. The solution I could find for this is to
+have it declared at the top level, `ContentView` in our case:
+```
+@Namespace var lineAnimation
+```
+and then pass it on to the sub-views like this:
+```
+OverviewListView(lines: data,
+                  selectedLine: $selectedLine,
+                  lineAnimation: lineAnimation)
+```
+with the following declation to receive the value:
+```
+struct OverviewListView: View {
+    var lines: [ItemLineModel]
+    @Binding var selectedLine: ItemLineModel?
+    var lineAnimation: Namespace.ID
+    ...
+```
+the value is passed on to the sub-views and they all use the same declaration.
+
+## withAnimation
+
+To trigger the animations, it is necessary to wrap state changes in
+`withAnimation`. This means that the `Button` declaration in the overview cell
+becomes:
+```
+Button {
+    withAnimation {
+        selectedLine = line
+    }
+}
+label: {
+    ...
+}    
+```
+
+## Must Disappear
+
+An important aspect when `.matchedGeometryEffect` is used, is that SwiftUI
+expects to have only 1 view with each `id` at any given time. If you show either
+view A or view B (e.g. with a `if` statement),
