@@ -13,9 +13,11 @@ struct DetailsListView: View {
                     .transition(.move(edge: .trailing))
             }
             ScrollView {
-                ForEach(items) { item in
-                    DetailsListCellView(item: item,
-                                        lineAnimation: lineAnimation)
+                VStack {
+                    ForEach(items) { item in
+                        DetailsListCellView(item: item,
+                                            lineAnimation: lineAnimation)
+                    }
                 }
             }
         }
